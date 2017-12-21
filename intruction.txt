@@ -1,0 +1,6 @@
+primero dejar a ejemplo.env ----> .env
+
+hay que seguir las intrucciones de README
+
+y probar
+

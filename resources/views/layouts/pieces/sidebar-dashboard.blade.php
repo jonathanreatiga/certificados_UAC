@@ -11,50 +11,50 @@
         <ul class="nav">
             <li class="active">
                 <a href="dashboard.html">
-                    <i class="material-icons">dashboard</i>
-                    <p>Dashboard</p>
-                </a>
-            </li>
-            <li>
-                <a href="user.html">
                     <i class="material-icons">person</i>
-                    <p>User Profile</p>
+                    <p>Usuarios</p>
                 </a>
             </li>
             <li>
-                <a href="table.html">
+                <a href="#">
+                    <i class="material-icons">person</i>
+                    <p>---------</p>
+                </a>
+            </li>
+            <li>
+                <a href="#">
                     <i class="material-icons">content_paste</i>
-                    <p>Table List</p>
+                    <p>---------</p>
                 </a>
             </li>
             <li>
-                <a href="typography.html">
+                <a href="#">
                     <i class="material-icons">library_books</i>
-                    <p>Typography</p>
+                    <p>---------</p>
                 </a>
             </li>
             <li>
-                <a href="icons.html">
+                <a href="#">
                     <i class="material-icons">bubble_chart</i>
-                    <p>Icons</p>
+                    <p>---------</p>
                 </a>
             </li>
             <li>
-                <a href="maps.html">
+                <a href="#">
                     <i class="material-icons">location_on</i>
-                    <p>Maps</p>
+                    <p>---------</p>
                 </a>
             </li>
             <li>
-                <a href="notifications.html">
+                <a href="#">
                     <i class="material-icons text-gray">notifications</i>
-                    <p>Notifications</p>
+                    <p>---------</p>
                 </a>
             </li>
             <li class="active-pro">
-                <a href="upgrade.html">
+                <a href="#">
                     <i class="material-icons">unarchive</i>
-                    <p>Upgrade to PRO</p>
+                    <p>---------</p>
                 </a>
             </li>
         </ul>

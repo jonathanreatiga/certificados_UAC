@@ -18,67 +18,44 @@
 
                                     <div class="input-group">
 										<span class="input-group-addon">
-											<i class="material-icons">face</i>
+											{{--  <i class="material-icons">face</i>  --}}
 										</span>
-                                        <div class="form-group label-floating {{ $errors->has('name') ? ' has-error' : '' }}">
-                                            @if ($errors->has('name'))
-                                            <label class="control-label">{{ $errors->first('name') }}</label>
+                                        <div class="form-group label-floating {{ $errors->has('cursonombre') ? ' has-error' : '' }}">
+                                            @if ($errors->has('cursonombre'))
+                                            <label class="control-label">{{ $errors->first('cursonombre') }}</label>
                                             @endif
-                                            <input id="name" placeholder="How should we call you?" type="text" class="form-control" name="name" value="{{ old('name') }}" required autofocus>
+                                            <input id="cursonombre" placeholder="Ingrese numero del curso" type="text" class="form-control" name="cursonombre" value="{{ old('cursonombre') }}" required autofocus>
                                             <span class="material-input"></span>
                                         </div>
                                     </div>
 
                                     <div class="input-group">
 										<span class="input-group-addon">
-											<i class="material-icons">person</i>
+											{{--  <i class="material-icons">person</i>  --}}
 										</span>
-                                        <div class="form-group label-floating {{ $errors->has('nickname') ? ' has-error' : '' }}">
-                                            @if ($errors->has('nickname'))
-                                                <label class="control-label">{{ $errors->first('nickname') }}</label>
+                                        <div class="form-group label-floating {{ $errors->has('cursodescripcion') ? ' has-error' : '' }}">
+                                            @if ($errors->has('crusodescripcion'))
+                                                <label class="control-label">{{ $errors->first('cursodescripcion') }}</label>
                                             @endif
-                                            <input id="name" placeholder="Choose a nice nickname" type="text" class="form-control" name="nickname" value="{{ old('nickname') }}" required>
+                                            <input id="cursodescripcion" placeholder="Ingrese descripcion del Curso" type="text" class="form-control" name="cursodescripcion" value="{{ old('cursodescripcion') }}" required>
                                             <span class="material-input"></span>
                                         </div>
                                     </div>
 
                                     <div class="input-group">
 										<span class="input-group-addon">
-											<i class="material-icons">mail_outline</i>
+											{{--  <i class="material-icons">mail_outline</i>  --}}
 										</span>
-                                        <div class="form-group label-floating {{ $errors->has('email') ? ' has-error' : '' }}">
-                                            @if ($errors->has('email'))
-                                                <label class="control-label">{{ $errors->first('email') }}</label>
+                                        <div class="form-group label-floating {{ $errors->has('cursonumerohoras') ? ' has-error' : '' }}">
+                                            @if ($errors->has('cursonumerohoras'))
+                                                <label class="control-label">{{ $errors->first('cursonumerohoras') }}</label>
                                             @endif
-                                            <input id="email" placeholder="What is your email?" type="email" class="form-control" name="email" value="{{ old('email') }}" required>
+                                            <input id="cursonumerohoras" placeholder="Ingrese numero de Horas" type="text" class="form-control" name="cursonumerohoras" value="{{ old('cursonumerohoras') }}" required>
                                             <span class="material-input"></span>
                                         </div>
                                     </div>
 
-                                    <div class="input-group">
-										<span class="input-group-addon">
-											<i class="material-icons">lock_outline</i>
-										</span>
-                                        <div class="form-group label-floating {{ $errors->has('password') ? ' has-error' : '' }}">
-                                            <input id="password" placeholder="Type a strong password" type="password" class="form-control" name="password" value="{{ old('password') }}" required>
-                                            <span class="material-input"></span>
-                                        </div>
-                                    </div>
-
-                                    <div class="input-group">
-										<span class="input-group-addon">
-											<i class="material-icons">lock</i>
-										</span>
-                                        <div class="form-group label-floating {{ $errors->has('password') ? ' has-error' : '' }}">
-                                            @if ($errors->has('password'))
-                                                <label class="control-label">{{ $errors->first('password') }}</label>
-                                                <input id="password_confirmation" type="password" class="form-control" name="password_confirmation" value="" required>
-                                            @else
-                                                <input id="password_confirmation" placeholder="And confirm it" type="password" class="form-control" name="password_confirmation" value="" required>
-                                            @endif
-                                            <span class="material-input"></span>
-                                        </div>
-                                    </div>
+                                    
 
                                     <!-- If you want to add a checkbox to this form, uncomment this code
 

@@ -6,6 +6,7 @@
             <div class="card">
                 <div class="card-header" data-background-color="green">
                     <h4 class="title">{{ auth()->user()->name }}</h4>
+                    <h4 class="subtitle">Welcome</h4>
                 </div>
                 <div class="card-content">
                     <h4 class="title">You are logged in!</h4>

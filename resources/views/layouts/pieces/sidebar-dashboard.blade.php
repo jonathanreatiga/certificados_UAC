@@ -10,9 +10,9 @@
     <div class="sidebar-wrapper">
         <ul class="nav">
             <li class="active">
-                <a href="dashboard.html">
-                    <i class="material-icons">person</i>
-                    <p>Usuarios</p>
+                <a href="{{ route('homecurso') }}">
+                    <i class="material-icons">assignment</i>
+                    <p>Cursos</p>
                 </a>
             </li>
             <li>

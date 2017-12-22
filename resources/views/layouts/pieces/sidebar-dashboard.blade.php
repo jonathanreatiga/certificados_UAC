@@ -2,7 +2,7 @@
     <!-- data-color="purple | blue | green | orange | red" -->
 
     <div class="logo">
-        <a href="#" class="simple-text">
+        <a href=" " class="simple-text">
             {{ auth()->user()->name }}
         </a>
     </div>
@@ -10,7 +10,7 @@
     <div class="sidebar-wrapper">
         <ul class="nav">
             <li class="active">
-                <a href="{{ route('homecurso') }}">
+                <a href="{{ route('articles.index') }}">
                     <i class="material-icons">assignment</i>
                     <p>Cursos</p>
                 </a>

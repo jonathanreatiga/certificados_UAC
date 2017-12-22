@@ -22,5 +22,7 @@ Route::get('auth/{provider}/callback', 'Auth\ProvidersController@handleProviderC
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/dashboard', 'HomeController@dashboard')->name('dashboard');
 
-//codigo nuevo de cursos
-Route::get('/curso', 'cursoController@index')->name('homecurso');
+
+//nuevo codigo
+Route::resource('articles','ArticleController');
+Route::get('article', 'ArticleController@index')->name('articles.layouts.index');

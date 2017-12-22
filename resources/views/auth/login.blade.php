@@ -59,7 +59,7 @@
 
                                     <div class="checkbox">
                                         <label>
-                                            <input type="checkbox" name="remember" checked>
+                                            <input type="checkbox" name="remember">
                                             Keep me logged
                                         </label>
                                     </div>

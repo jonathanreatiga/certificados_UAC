@@ -2,5 +2,30 @@ primero dejar a ejemplo.env ----> .env
 
 hay que seguir las intrucciones de README
 
+
+** composer require laravelcollective/html
+
+** After successfully install package, you have to open config/app.php file and add service provider and alias. config/app.php
+
+'providers' => [
+
+	....
+
+	Collective\Html\HtmlServiceProvider::class,
+
+],
+
+'aliases' [
+
+	....
+
+	'Form' => Collective\Html\FormFacade::class,
+
+    'Html' => Collective\Html\HtmlFacade::class,
+
+],
+
+
+
 y probar
 

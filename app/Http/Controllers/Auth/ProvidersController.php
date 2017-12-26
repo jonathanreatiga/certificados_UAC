@@ -55,27 +55,27 @@ class ProvidersController extends Controller
         }
 
         // Generate random nickname based on the user's email
-        if(!isset($user->nickname) || is_null($user->nickname)) {
-            $base = strtok($user->email, '@');
+        // if(!isset($user->nickname) || is_null($user->nickname)) {
+        //     $base = strtok($user->email, '@');
 
-            if(User::where("nickname", $base)->exists()) {
-                do {
-                    $nickname = $base.rand(1, 20);
-                } while (User::where("nickname", $nickname)->exists());
-            } else {
-                $nickname = $base;
-            }
+        //     if(User::where("nickname", $base)->exists()) {
+        //         do {
+        //             $nickname = $base.rand(1, 20);
+        //         } while (User::where("nickname", $nickname)->exists());
+        //     } else {
+        //         $nickname = $base;
+        //     }
 
-            $user->nickname = $nickname;
-        }
+        //     $user->nickname = $nickname;
+        // }
 
         return User::create([
-            'name'     => $user->name,
-            'email'    => $user->email,
-            'nickname'    => $user->nickname,
-            'avatar'    => $user->avatar,
-            'provider' => $provider,
-            'provider_id' => $user->id
+            'name'     => $user->name
+            //'email'    => $user->email,
+            //'nickname'    => $user->nickname,
+            //'avatar'    => $user->avatar,
+            //'provider' => $provider,
+            //'provider_id' => $user->id
         ]);
     }
 }

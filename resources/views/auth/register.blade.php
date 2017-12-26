@@ -20,7 +20,8 @@
                         <div class="card card-signup">
                             <form class="form-horizontal" method="POST" action="{{ route('register') }}">
                                 {{ csrf_field() }}
-                                <div class="header header-primary text-center">
+
+                                {{--  <div class="header header-primary text-center">
                                     <h4>Sign Up</h4>
                                     <div class="social-line">
                                         <a href="{{ route('provider', 'facebook') }}" class="btn btn-simple btn-just-icon">
@@ -30,7 +31,7 @@
                                             <i class="fa fa-google-plus"></i>
                                         </a>
                                     </div>
-                                </div>
+                                </div>  --}}
                                 <p class="text-divider">Or Be Classical</p>
                                 <div class="content">
 
@@ -47,7 +48,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="input-group">
+                                    {{--  <div class="input-group">
 										<span class="input-group-addon">
 											<i class="material-icons">person</i>
 										</span>
@@ -71,7 +72,7 @@
                                             <input id="email" placeholder="What is your email?" type="email" class="form-control" name="email" value="{{ old('email') }}" required>
                                             <span class="material-input"></span>
                                         </div>
-                                    </div>
+                                    </div>  --}}
 
                                     <div class="input-group">
 										<span class="input-group-addon">

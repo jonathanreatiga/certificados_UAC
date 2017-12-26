@@ -20,7 +20,8 @@
                         <div class="card card-signup">
                             <form class="form-horizontal" method="POST" action="{{ route('login') }}">
                                 {{ csrf_field() }}
-                                <div class="header header-success text-center">
+
+                                {{--  <div class="header header-success text-center">
                                     <h4>Sign Up</h4>
                                     <div class="social-line">
                                         <a href="{{ route('provider', 'facebook') }}" class="btn btn-simple btn-just-icon">
@@ -30,7 +31,7 @@
                                             <i class="fa fa-google-plus"></i>
                                         </a>
                                     </div>
-                                </div>
+                                </div>  --}}
                                 <p class="text-divider">Or use your credentials</p>
                                 <div class="content">
 
@@ -38,11 +39,11 @@
 										<span class="input-group-addon">
 											<i class="material-icons">face</i>
 										</span>
-                                        <div class="form-group label-floating {{ $errors->has('email') ? ' has-error' : 'has-success' }}">
-                                            @if ($errors->has('email'))
-                                            <label class="control-label">{{ $errors->first('email') }}</label>
+                                        <div class="form-group label-floating {{ $errors->has('name') ? ' has-error' : 'has-success' }}">
+                                            @if ($errors->has('name'))
+                                            <label class="control-label">{{ $errors->first('name') }}</label>
                                             @endif
-                                            <input id="credential" placeholder="Use your email or nickname" type="text" class="form-control" name="email" value="{{ old('email') }}" required autofocus>
+                                            <input id="credential" placeholder="Use your name or nickname" type="text" class="form-control" name="name" value="{{ old('name') }}" required autofocus>
                                             <span class="material-input"></span>
                                         </div>
                                     </div>

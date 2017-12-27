@@ -1,16 +1,16 @@
-<div class="sidebar" data-color="green" data-image="{{ asset('img/sidebar-1.jpg') }}" style="position: fixed">
+<div class="sidebar" data-color="green" style="position: fixed"> {{-- data-image="{{ asset('img/sidebar-1.jpg') }}" --}}
     <!-- data-color="purple | blue | green | orange | red" -->
 
     <div class="logo">
-        <a href=" " class="simple-text">
+        <a class="simple-text"> {{-- href=" " --}}
             {{ auth()->user()->name }}
         </a>
     </div>
 
     <div class="sidebar-wrapper">
         <ul class="nav">
-            <li class="active">
-                <a href="{{ route('articles.index') }}">
+            <li class="">  {{--  <li class="active"> --}}
+                  <a href="{{ route('cursos.index') }}">   {{--  <a href="{{ route('articles.index') }}">  --}}
                     <i class="material-icons">assignment</i>
                     <p>Cursos</p>
                 </a>

@@ -23,6 +23,6 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/dashboard', 'HomeController@dashboard')->name('dashboard');
 
 
-//nuevo codigo
-Route::resource('articles','ArticleController');
-Route::get('article', 'ArticleController@index')->name('articles.layouts.index');
+//nuevo codigo para Curso
+Route::resource('cursos','CursoController');
+Route::get('curso', 'CursoController@index')->name('cursos.layouts.index');

@@ -2,14 +2,17 @@
     <div class="container-fluid">
         <div class="navbar-header">
 
-            <button type="button" class="navbar-toggle" data-toggle="collapse">
+            {{--  <button type="button" class="navbar-toggle" data-toggle="collapse">
                 <span class="sr-only">Toggle navigation</span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="{{route('dashboard')}}">
+            </button>  --}}
+            {{--  <a class="navbar-brand" href="{{route('dashboard')}}">
                 {{ config('app.name', 'Hello Nina') }}
+            </a>  --}}
+            <a class="navbar-brand" href="{{route('dashboard')}}">
+               Ir Menu de Inicio
             </a>
         </div>
         <div class="collapse navbar-collapse">
@@ -38,7 +41,7 @@
                     <ul class="dropdown-menu" role="menu">
                         <li>
                             <a href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
-                                Logout
+                                Cerrar Seccion
                             </a>
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                 {{ csrf_field() }}

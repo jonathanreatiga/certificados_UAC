@@ -15,4 +15,13 @@ class Curso extends Model
     protected $fillable = [
         'cursonombre', 'cursodescripcion', 'cursonumerohoras'
     ];
+
+    public function scopeSearch($query, $cursonombre)
+    {
+        return $query->where('cursonombre', 'like', "%$cursonombre%")
+        ->orwhere('cursodescripcion', 'like', "%$cursonombre%")
+        ->orwhere('cursonumerohoras', 'like', "%$cursonombre%");
+        
+        //return $query->where('cursonombre', 'like', "%$cursonombre%");
+    }
 }

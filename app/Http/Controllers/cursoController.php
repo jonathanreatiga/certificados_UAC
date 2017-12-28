@@ -24,11 +24,12 @@ class CursoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $cursos = Curso::latest()->paginate(5);
-        return view('cursos.layouts.index',compact('cursos')) //compact('articles'))
-            ->with('i', (request()->input('page', 1) - 1) * 5);
+        //$cursos = Curso::latest()->paginate(5);
+        $cursos = Curso::Search($request->cursonombre)->orderBy('id', 'DESC')->paginate(5);
+        return view('cursos.layouts.index',compact('cursos'))
+            ->with('i', (request()->input('page', 1) - 1) * 2); //5)
     }
 
     /**

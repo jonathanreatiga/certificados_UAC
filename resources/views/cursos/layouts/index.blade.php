@@ -11,6 +11,37 @@
             <div class="pull-right">
                 <a class="btn btn-success" href="{{ route('cursos.create') }}">Crear Nuevo Curso</a>
             </div>
+            {{--  buscador:  --}}
+            
+            {{--  fin del buscador  --}}
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12">
+            
+             {{--  buscador:  --}}
+             {!! Form::open(['route' => 'cursos.layouts.index', 'method'=> 'GET', 'class'=> 'navbar-form pull-right']) !!}
+             
+                         {{--  <div class="input-group">
+                             {!! Form::text('pagina', null, ['class'=>'form-control', 'placelhoder'=>'paginas...', 'aria-describedby'=>'search'] ) !!}
+                             <span class="input-group-addon" id="search">
+                                 <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                             </span>
+                         </div>  --}}
+             
+                        <div class="input-group custom-search-form">
+                            <input type="text" class="form-control" name="cursonombre" placeholder="Buscar...">
+                                <span class="input-group-btn">
+                                    <button class="btn btn-success" type="submit"> {{--  <button class="btn btn-default" type="submit">  --}}
+                                        <i class="fa fa-search"></i> <!--<span class="hiddenGrammarError" pre="" data-mce-bogus="1"-->
+                                    </button>
+                                </span>
+                        </div>
+             
+            {!! Form::close() !!}
+            {{--  fin del buscador  --}}
+
         </div>
     </div>
 
@@ -22,11 +53,6 @@
 
     <div class="row">
         <div class="col-lg-12 margin-tb">
-
-            {{--  <div class="input-group">
-            <span class="input-group-addon">Buscar</span>
-            <input id="filtrar" type="text" class="form-control" placeholder="Ingresa la canción de este Disco que deseas Buscar...">
-          </div>  --}}
 
                 <table class="table">
                         <thead>
@@ -62,23 +88,3 @@
         </div>
     </div>
 @endsection
-
-{{--  <script type="text/javascript">
-    $(document).ready(function () {
-        
-                    (function ($) {
-        
-                        $('#filtrar').keyup(function () {
-        
-                            var rex = new RegExp($(this).val(), 'i');
-                            $('.buscar tr').hide();
-                            $('.buscar tr').filter(function () {
-                                return rex.test($(this).text());
-                            }).show();
-        
-                        })
-        
-                    }(jQuery));
-        
-                });
-</script>  --}}

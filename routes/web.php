@@ -25,4 +25,4 @@ Route::get('/dashboard', 'HomeController@dashboard')->name('dashboard');
 
 //nuevo codigo para Curso
 Route::resource('cursos','CursoController');
-Route::get('curso', 'CursoController@index')->name('cursos.layouts.index');
+Route::get('curso', 'CursoController@index')->name('cursos.layouts.index');  //->name('cursos.layouts.index')

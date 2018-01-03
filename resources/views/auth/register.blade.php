@@ -32,7 +32,7 @@
                                         </a>
                                     </div>
                                 </div>  --}}
-                                <p class="text-divider">Or Be Classical</p>
+                                <p class="text-divider">Ingrese sus Datos para Registrarse</p>
                                 <div class="content">
 
                                     <div class="input-group">
@@ -43,7 +43,44 @@
                                             @if ($errors->has('name'))
                                             <label class="control-label">{{ $errors->first('name') }}</label>
                                             @endif
-                                            <input id="name" placeholder="How should we call you?" type="text" class="form-control" name="name" value="{{ old('name') }}" required autofocus>
+                                            <input id="name" placeholder="Escribe el nombre" type="text" class="form-control" name="name" value="{{ old('name') }}" required autofocus>
+                                            <span class="material-input"></span>
+                                        </div>
+                                    </div>
+
+                                    <div class="input-group">
+										<span class="input-group-addon">
+											<i class="material-icons">face</i>
+										</span>
+                                        <div class="form-group label-floating {{ $errors->has('usuarioapellido') ? ' has-error' : '' }}">
+                                            @if ($errors->has('usuarioapellido'))
+                                            <label class="control-label">{{ $errors->first('usuarioapellido') }}</label>
+                                            @endif
+                                            <input id="usuarioapellido" placeholder="Escribe el apellido" type="text" class="form-control" name="usuarioapellido" value="{{ old('usuarioapellido') }}" required>
+                                            <span class="material-input"></span>
+                                        </div>
+                                    </div>
+                                    <div class="input-group">
+										<span class="input-group-addon">
+											<i class="material-icons">face</i>
+										</span>
+                                        <div class="form-group label-floating {{ $errors->has('usuariotipodocumento') ? ' has-error' : '' }}">
+                                            @if ($errors->has('usuariotipodocumento'))
+                                            <label class="control-label">{{ $errors->first('usuariotipodocumento') }}</label>
+                                            @endif
+                                            <input id="usuariotipodocumento" placeholder="Escribe el tipo documento" type="text" class="form-control" name="usuariotipodocumento" value="{{ old('usuariotipodocumento') }}" required>
+                                            <span class="material-input"></span>
+                                        </div>
+                                    </div>
+                                    <div class="input-group">
+										<span class="input-group-addon">
+											<i class="material-icons">face</i>
+										</span>
+                                        <div class="form-group label-floating {{ $errors->has('usuarionumerodocumento') ? ' has-error' : '' }}">
+                                            @if ($errors->has('usuarionumerodocumento'))
+                                            <label class="control-label">{{ $errors->first('usuarionumerodocumento') }}</label>
+                                            @endif
+                                            <input id="usuarionumerodocumento" placeholder="Escribe el numero documento" type="text" class="form-control" name="usuarionumerodocumento" value="{{ old('usuarionumerodocumento') }}" required>
                                             <span class="material-input"></span>
                                         </div>
                                     </div>
@@ -79,7 +116,7 @@
 											<i class="material-icons">lock_outline</i>
 										</span>
                                         <div class="form-group label-floating {{ $errors->has('password') ? ' has-error' : '' }}">
-                                            <input id="password" placeholder="Type a strong password" type="password" class="form-control" name="password" value="{{ old('password') }}" required>
+                                            <input id="password" placeholder="Escriba la Contraseña" type="password" class="form-control" name="password" value="{{ old('password') }}" required>
                                             <span class="material-input"></span>
                                         </div>
                                     </div>
@@ -93,7 +130,7 @@
                                                 <label class="control-label">{{ $errors->first('password') }}</label>
                                                 <input id="password_confirmation" type="password" class="form-control" name="password_confirmation" value="" required>
                                             @else
-                                                <input id="password_confirmation" placeholder="And confirm it" type="password" class="form-control" name="password_confirmation" value="" required>
+                                                <input id="password_confirmation" placeholder="Confirme la Contraseña" type="password" class="form-control" name="password_confirmation" value="" required>
                                             @endif
                                             <span class="material-input"></span>
                                         </div>

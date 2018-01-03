@@ -9,7 +9,7 @@
                     <h4 class="subtitle">Welcome</h4>
                 </div>
                 <div class="card-content">
-                    <h4 class="title">You are logged in!</h4>
+                    <h4 class="title">Usted ha podido Ingresar!</h4>
                 </div>
             </div>
         </div>

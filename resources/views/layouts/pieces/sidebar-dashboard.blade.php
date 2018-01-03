@@ -16,15 +16,15 @@
                 </a>
             </li>
             <li>
-                <a href="#">
+                <a href="{{ route('plantillas.index') }}">
                     <i class="material-icons">person</i>
-                    <p>---------</p>
+                    <p>Plantillas</p>
                 </a>
             </li>
             <li>
-                <a href="#">
+                <a href="{{ route('roles.index') }}">
                     <i class="material-icons">content_paste</i>
-                    <p>---------</p>
+                    <p>Roles de Matriculas</p>
                 </a>
             </li>
             <li>

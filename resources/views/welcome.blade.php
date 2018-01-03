@@ -3,7 +3,9 @@
 @section('content')
     <div class="landing-page">
         @include('layouts.pieces.topbar-home')
+
         <div class="wrapper">
+            
             <div class="header header-filter" style="background-image: url('{{ asset('img/pexels-photo-450035.jpeg') }}');">
                 <div class="container">
                     <div class="row">
@@ -18,10 +20,11 @@
                             </a>
                         </div>
                     </div>
+                    @include('layouts.pieces.footer-dashboard')
                 </div>
             </div>
 
-            <div class="main main-raised">
+            {{--  <div class="main main-raised">
                 <div class="container">
                     <div class="section text-center section-landing">
                         <div class="row">
@@ -158,9 +161,9 @@
                     </div>
                 </div>
 
-            </div>
+            </div>  --}}
 
-            @include('layouts.pieces.footer-dashboard')
+            {{--  @include('layouts.pieces.footer-dashboard')  --}}
 
         </div>
     </div>

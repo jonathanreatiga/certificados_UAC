@@ -1,7 +1,7 @@
 <nav class="navbar navbar-transparent navbar-absolute">
     <div class="container">
         <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header">
+        {{--  <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigation-example">
                 <span class="sr-only">Toggle navigation</span>
                 <span class="icon-bar"></span>
@@ -9,7 +9,7 @@
                 <span class="icon-bar"></span>
             </button>
             <a class="navbar-brand" href="/">{{ config('app.name', 'Hello Nina') }}</a>
-        </div>
+        </div>  --}}
 
         <div class="collapse navbar-collapse" id="navigation-example">
             <ul class="nav navbar-nav navbar-right">
@@ -17,13 +17,13 @@
                 <li>
                     <a href="{{ route('register') }}">
                         <i class="material-icons">person_add</i>
-                        Register
+                        Registrar
                     </a>
                 </li>
                 <li>
                     <a href="{{ route('login') }}">
                         <i class="material-icons">person_outline</i>
-                        Login
+                        Ingresar
                     </a>
                 </li>
                 @else
@@ -52,21 +52,21 @@
                     </ul>
                 </li>
                 @endguest
-                <li>
-                    <a href="https://twitter.com/#" target="_blank" class="btn btn-simple btn-white btn-just-icon">
+                {{--  <li>
+                    <a href="#" target="_blank" class="btn btn-simple btn-white btn-just-icon">
                         <i class="fa fa-twitter"></i>
                     </a>
                 </li>
                 <li>
-                    <a href="https://www.facebook.com/#" target="_blank" class="btn btn-simple btn-white btn-just-icon">
+                    <a href="#" target="_blank" class="btn btn-simple btn-white btn-just-icon">
                         <i class="fa fa-facebook-square"></i>
                     </a>
                 </li>
                 <li>
-                    <a href="https://www.instagram.com/#" target="_blank" class="btn btn-simple btn-white btn-just-icon">
+                    <a href="#" target="_blank" class="btn btn-simple btn-white btn-just-icon">
                         <i class="fa fa-instagram"></i>
                     </a>
-                </li>
+                </li>  --}}
             </ul>
         </div>
     </div>

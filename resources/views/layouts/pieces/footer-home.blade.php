@@ -3,29 +3,29 @@
         <nav class="pull-left">
             <ul>
                 <li>
-                    <a href="http://www.creative-tim.com">
+                    <a href="#">
                         Creative Tim
                     </a>
                 </li>
                 <li>
-                    <a href="http://presentation.creative-tim.com">
+                    <a href="#">
                         About Us
                     </a>
                 </li>
                 <li>
-                    <a href="http://blog.creative-tim.com">
+                    <a href="#">
                         Blog
                     </a>
                 </li>
                 <li>
-                    <a href="http://www.creative-tim.com/license">
+                    <a href="#">
                         Licenses
                     </a>
                 </li>
             </ul>
         </nav>
         <div class="copyright pull-right">
-            &copy; 2016, made with <i class="fa fa-heart heart"></i> by <a href="http://www.creative-tim.com" target="_blank">Creative Tim</a>
+            &copy; 2016, made with <i class="fa fa-heart heart"></i> by <a href="#"> Creative Tim</a>
         </div>
     </div>
 </footer>

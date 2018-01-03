@@ -32,7 +32,7 @@
                                         </a>
                                     </div>
                                 </div>  --}}
-                                <p class="text-divider">Or use your credentials</p>
+                                <p class="text-divider">Ingrese sus Datos para validar</p>
                                 <div class="content">
 
                                     <div class="input-group">
@@ -43,7 +43,7 @@
                                             @if ($errors->has('name'))
                                             <label class="control-label">{{ $errors->first('name') }}</label>
                                             @endif
-                                            <input id="credential" placeholder="Use your name or nickname" type="text" class="form-control" name="name" value="{{ old('name') }}" required autofocus>
+                                            <input id="credential" placeholder="Escriba su nombre" type="text" class="form-control" name="name" value="{{ old('name') }}" required autofocus>
                                             <span class="material-input"></span>
                                         </div>
                                     </div>
@@ -53,17 +53,17 @@
 											<i class="material-icons">lock_outline</i>
 										</span>
                                         <div class="form-group label-floating {{ $errors->has('password') ? ' has-error' : 'has-success' }}">
-                                            <input id="password" placeholder="Type a strong password" type="password" class="form-control" name="password" value="{{ old('password') }}" required>
+                                            <input id="password" placeholder="Escriba sus Contraseña" type="password" class="form-control" name="password" value="{{ old('password') }}" required>
                                             <span class="material-input"></span>
                                         </div>
                                     </div>
 
-                                    <div class="checkbox">
+                                    {{--  <div class="checkbox">
                                         <label>
                                             <input type="checkbox" name="remember">
                                             Keep me logged
                                         </label>
-                                    </div>
+                                    </div>  --}}
                                 </div>
                                 <div class="footer text-center">
                                     <button type="submit" class="btn btn-simple btn-success btn-lg">Login</button>

@@ -26,3 +26,11 @@ Route::get('/dashboard', 'HomeController@dashboard')->name('dashboard');
 //nuevo codigo para Curso
 Route::resource('cursos','CursoController');
 Route::get('curso', 'CursoController@index')->name('cursos.layouts.index');  //->name('cursos.layouts.index')
+
+//nuevo codigo para plantilla
+Route::resource('plantillas','PlantillaController');
+Route::get('plantilla', 'PlantillaController@index')->name('plantillas.layouts.index');
+
+//nuevo codigo para roles de Matricula
+Route::resource('roles','RoleController');
+Route::get('role', 'RoleController@index')->name('roles.layouts.index');

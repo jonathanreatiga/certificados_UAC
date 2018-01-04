@@ -14,12 +14,12 @@ class Role extends Model
      * @var array
      */
     protected $fillable = [
-        'rolnombre', 'cargo'
+        'rolnombre', 'rolcargo'
     ];
 
     public function scopeSearch($query, $rolnombre)
     {
         return $query->where('rolnombre', 'like', "%$rolnombre%")
-        ->orwhere('cargo', 'like', "%$rolnombre%");
+        ->orwhere('rolcargo', 'like', "%$rolnombre%");
     }
 }

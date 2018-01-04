@@ -22,7 +22,6 @@ Route::get('auth/{provider}/callback', 'Auth\ProvidersController@handleProviderC
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/dashboard', 'HomeController@dashboard')->name('dashboard');
 
-
 //nuevo codigo para Curso
 Route::resource('cursos','CursoController');
 Route::get('curso', 'CursoController@index')->name('cursos.layouts.index');  //->name('cursos.layouts.index')
@@ -34,3 +33,7 @@ Route::get('plantilla', 'PlantillaController@index')->name('plantillas.layouts.i
 //nuevo codigo para roles de Matricula
 Route::resource('roles','RoleController');
 Route::get('role', 'RoleController@index')->name('roles.layouts.index');
+
+//nuevo codigo para estados de Matricula
+Route::resource('estados','EstadoController');
+Route::get('estado', 'EstadoController@index')->name('estados.layouts.index');

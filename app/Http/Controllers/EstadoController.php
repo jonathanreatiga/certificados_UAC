@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Role;
+use App\Estado;
 
 use Illuminate\Http\Request;
 
-class RoleController extends Controller
+class EstadoController extends Controller
 {
+
     /**
      * Create a new controller instance.
      *
@@ -26,8 +27,8 @@ class RoleController extends Controller
     public function index(Request $request)
     {
         //$cursos = Curso::latest()->paginate(5);
-        $roles = Role::Search($request->rolnombre)->orderBy('id', 'DESC')->paginate(5);
-        return view('roles.layouts.index',compact('roles'))
+        $estados = Estado::Search($request->estadonombre)->orderBy('id', 'DESC')->paginate(5);
+        return view('estados.layouts.index',compact('estados'))
             ->with('i', (request()->input('page', 1) - 1) * 2); //5)
     }
 
@@ -38,7 +39,7 @@ class RoleController extends Controller
      */
     public function create()
     {
-        return view('roles.layouts.create');
+        return view('estados.layouts.create');
     }
 
     /**
@@ -50,11 +51,11 @@ class RoleController extends Controller
     public function store(Request $request)
     {
         request()->validate([
-            'rolnombre' => 'required',
-            'rolcargo' => 'required',
+            'estadonombre' => 'required',
+            'estadodescripcion' => 'required',
         ]);
-        Role::create($request->all());
-        return redirect()->route('roles.layouts.index')
+        Estado::create($request->all());
+        return redirect()->route('estados.layouts.index')
                         ->with('success','Curso created successfully');
     }
 
@@ -66,8 +67,8 @@ class RoleController extends Controller
      */
     public function show($id)
     {
-        $roles = Role::find($id);
-        return view('roles.layouts.show',compact('roles'));
+        $estado = Estado::find($id);
+        return view('estados.layouts.show',compact('estado'));
     }
 
     /**
@@ -78,8 +79,8 @@ class RoleController extends Controller
      */
     public function edit($id)
     {
-        $roles = Role::find($id);
-        return view('roles.layouts.edit',compact('roles'));
+        $estado = Estado::find($id);
+        return view('estados.layouts.edit',compact('estado'));
     }
 
     /**
@@ -92,11 +93,11 @@ class RoleController extends Controller
     public function update(Request $request, $id)
     {
         request()->validate([
-            'rolnombre' => 'required',
-            'rolcargo' => 'required',
+            'estadonombre' => 'required',
+            'estadodescripcion' => 'required',
         ]);
-        Role::find($id)->update($request->all());
-        return redirect()->route('roles.layouts.index')
+        Estado::find($id)->update($request->all());
+        return redirect()->route('estados.layouts.index')
                         ->with('success','Curso updated successfully');
     }
 
@@ -108,8 +109,9 @@ class RoleController extends Controller
      */
     public function destroy($id)
     {
-        Role::find($id)->delete();
-        return redirect()->route('roles.layouts.index')
+        Estado::find($id)->delete();
+        return redirect()->route('estados.layouts.index')
                         ->with('success','Curso deleted successfully');
     }
+
 }

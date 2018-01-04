@@ -28,9 +28,9 @@
                 </a>
             </li>
             <li>
-                <a href="#">
+                <a href="{{ route('estados.index') }}">
                     <i class="material-icons">library_books</i>
-                    <p>---------</p>
+                    <p>Estados de Matriculas</p>
                 </a>
             </li>
             <li>

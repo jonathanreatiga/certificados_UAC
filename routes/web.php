@@ -37,3 +37,7 @@ Route::get('role', 'RoleController@index')->name('roles.layouts.index');
 //nuevo codigo para estados de Matricula
 Route::resource('estados','EstadoController');
 Route::get('estado', 'EstadoController@index')->name('estados.layouts.index');
+
+//nuevo codigo para usuarios
+Route::resource('users','UserController');
+Route::get('user', 'UserController@index')->name('users.layouts.index');

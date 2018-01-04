@@ -31,4 +31,18 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function setPasswordAttribute($password)
+    {   
+        $this->attributes['password'] = bcrypt($password);
+    }
+
+    public function scopeSearch($query, $name)
+    {
+        return $query->where('name', 'like', "%$name%")
+        ->orwhere('usuarioapellido', 'like', "%$name%")
+        ->orwhere('usuarionumerodocumento', 'like', "%$name%");
+        
+        //return $query->where('cursonombre', 'like', "%$cursonombre%");
+    }
 }

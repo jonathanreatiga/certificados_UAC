@@ -52,9 +52,9 @@
                 </a>
             </li>
             <li class="active-pro">
-                <a href="#">
+                <a href="{{ route('users.index') }}">
                     <i class="material-icons">unarchive</i>
-                    <p>---------</p>
+                    <p>Usuarios</p>
                 </a>
             </li>
         </ul>

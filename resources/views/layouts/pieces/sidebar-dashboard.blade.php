@@ -34,6 +34,12 @@
                 </a>
             </li>
             <li>
+                <a href="{{ route('sesiones.index') }}">
+                    <i class="material-icons">bubble_chart</i>
+                    <p>Sesiones</p>
+                </a>
+            </li>
+            <li>
                 <a href="#">
                     <i class="material-icons">bubble_chart</i>
                     <p>---------</p>

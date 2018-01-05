@@ -24,4 +24,10 @@ class Curso extends Model
         
         //return $query->where('cursonombre', 'like', "%$cursonombre%");
     }
+
+    //funcion para de uno a muchos
+    public function sesiones_del_curso()
+    {
+        return $this->hasMany('App\Sesion');
+    }
 }

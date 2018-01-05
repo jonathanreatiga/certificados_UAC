@@ -41,3 +41,7 @@ Route::get('estado', 'EstadoController@index')->name('estados.layouts.index');
 //nuevo codigo para usuarios
 Route::resource('users','UserController');
 Route::get('user', 'UserController@index')->name('users.layouts.index');
+
+//nuevo codigo para sesiones
+Route::resource('sesiones','SesionController');
+Route::get('sesion', 'SesionController@index')->name('sesiones.layouts.index');

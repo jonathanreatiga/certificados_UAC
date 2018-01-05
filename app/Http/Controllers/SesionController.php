@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Curso;
+use App\Sesion;
 
 use Illuminate\Http\Request;
 
-class CursoController extends Controller
+class SesionController extends Controller
 {
     
     /**
@@ -27,8 +27,8 @@ class CursoController extends Controller
     public function index(Request $request)
     {
         //$cursos = Curso::latest()->paginate(5);
-        $cursos = Curso::Search($request->cursonombre)->orderBy('id', 'ASC')->paginate(10);
-        return view('cursos.layouts.index',compact('cursos'))
+        $sesiones = Sesion::Search($request->sesionfecha)->orderBy('id', 'ASC')->paginate(10);
+        return view('sesiones.layouts.index',compact('sesiones'))
             ->with('i', (request()->input('page', 1) - 1) * 2); //5)
     }
 
@@ -39,7 +39,7 @@ class CursoController extends Controller
      */
     public function create()
     {
-        return view('cursos.layouts.create');
+        return view('sesiones.layouts.create');
     }
 
     /**
@@ -51,12 +51,12 @@ class CursoController extends Controller
     public function store(Request $request)
     {
         request()->validate([
-            'cursonombre' => 'required',
-            'cursodescripcion' => 'required',
-            'cursonumerohoras' => 'required',
+            'sesionfechainicio' => 'required',
+            'sesionfechafinal' => 'required',
+            'curso_id' => 'required',
         ]);
-        Curso::create($request->all());
-        return redirect()->route('cursos.layouts.index')
+        Sesion::create($request->all());
+        return redirect()->route('sesiones.layouts.index')
                         ->with('success','Curso created successfully');
     }
 
@@ -68,11 +68,11 @@ class CursoController extends Controller
      */
     public function show($id)
     {
-        //codigo modificado para mandar detalles de la lsiat del curso
-         $sesiones = Curso::find($id)->sesiones_del_curso;
+        //codigo modificado para mandar detalles de la lista del curso
+        //$cursos = Sesion::find($id)->curso;
         //fin
-        $curso = Curso::find($id);
-        return view('cursos.layouts.show',compact('curso','sesiones')); //antes: compact('curso')
+        $sesiones = Sesion::find($id);
+        return view('sesiones.layouts.show',compact('sesiones'));
     }
 
     /**
@@ -83,8 +83,8 @@ class CursoController extends Controller
      */
     public function edit($id)
     {
-        $curso = Curso::find($id);
-        return view('cursos.layouts.edit',compact('curso'));
+        $sesiones = Sesion::find($id);
+        return view('sesiones.layouts.edit',compact('sesiones'));
     }
 
     /**
@@ -97,12 +97,12 @@ class CursoController extends Controller
     public function update(Request $request, $id)
     {
         request()->validate([
-            'cursonombre' => 'required',
-            'cursodescripcion' => 'required',
-            'cursonumerohoras' => 'required',
+            'sesionfechainicio' => 'required',
+            'sesionfechafinal' => 'required',
+            'curso_id' => 'required',
         ]);
-        Curso::find($id)->update($request->all());
-        return redirect()->route('cursos.layouts.index')
+        Sesiones::find($id)->update($request->all());
+        return redirect()->route('sesiones.layouts.index')
                         ->with('success','Curso updated successfully');
     }
 
@@ -114,9 +114,8 @@ class CursoController extends Controller
      */
     public function destroy($id)
     {
-        Curso::find($id)->delete();
-        return redirect()->route('cursos.layouts.index')
+        Sesion::find($id)->delete();
+        return redirect()->route('sesiones.layouts.index')
                         ->with('success','Curso deleted successfully');
     }
-
 }

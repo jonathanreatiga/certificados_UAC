@@ -15,6 +15,12 @@ class CreateSesionesTable extends Migration
     {
         Schema::create('sesiones', function (Blueprint $table) {
             $table->increments('id');
+            $table->date('sesionfechainicio');
+            $table->date('sesionfechafinal');
+            $table->integer('curso_id')->unsigned();
+            //$table->integer('plantilla_id')->unsigned();
+            $table->foreign('curso_id')->references('id')->on('cursos')->onDelete('set null');
+            //$table->foreign('plantilla_id')->references('id')->on('plantillas');
             $table->timestamps();
         });
     }

@@ -3,9 +3,11 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Curso extends Model
 {
+    use SoftDeletes;
     protected $table = 'cursos';
     /**
      * The attributes that are mass assignable.
@@ -13,7 +15,7 @@ class Curso extends Model
      * @var array
      */
     protected $fillable = [
-        'cursonombre', 'cursodescripcion', 'cursonumerohoras'
+        'cursonombre', 'cursodescripcion', 'cursonumerohoras', 'deleted_at'
     ];
 
     public function scopeSearch($query, $cursonombre)
@@ -21,7 +23,6 @@ class Curso extends Model
         return $query->where('cursonombre', 'like', "%$cursonombre%")
         ->orwhere('cursodescripcion', 'like', "%$cursonombre%")
         ->orwhere('cursonumerohoras', 'like', "%$cursonombre%");
-        
         //return $query->where('cursonombre', 'like', "%$cursonombre%");
     }
 

@@ -22,6 +22,7 @@ class CreatePlantillasTable extends Migration
             $table->string('plantillaorientacion', 45);
             $table->string('plantillaformato', 45);
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

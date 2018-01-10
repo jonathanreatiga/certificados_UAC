@@ -22,6 +22,12 @@
                 </a>
             </li>
             <li>
+                <a href="{{ route('sesiones.index') }}">
+                    <i class="material-icons">bubble_chart</i>
+                    <p>Sesiones</p>
+                </a>
+            </li>
+            <li>
                 <a href="{{ route('roles.index') }}">
                     <i class="material-icons">content_paste</i>
                     <p>Roles de Matriculas</p>
@@ -34,15 +40,9 @@
                 </a>
             </li>
             <li>
-                <a href="{{ route('sesiones.index') }}">
+                <a href="{{ route('matriculas.index') }}">
                     <i class="material-icons">bubble_chart</i>
-                    <p>Sesiones</p>
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    <i class="material-icons">bubble_chart</i>
-                    <p>---------</p>
+                    <p>Matriculas</p>
                 </a>
             </li>
             <li>

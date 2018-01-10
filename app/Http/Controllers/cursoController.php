@@ -29,7 +29,7 @@ class CursoController extends Controller
         //$cursos = Curso::latest()->paginate(5);
         $cursos = Curso::Search($request->cursonombre)->orderBy('id', 'ASC')->paginate(10);
         return view('cursos.layouts.index',compact('cursos'))
-            ->with('i', (request()->input('page', 1) - 1) * 2); //5)
+            ->with('i', (request()->input('page', 1) - 1) * 10); //5)
     }
 
     /**
@@ -68,8 +68,8 @@ class CursoController extends Controller
      */
     public function show($id)
     {
-        //codigo modificado para mandar detalles de la lsiat del curso
-         $sesiones = Curso::find($id)->sesiones_del_curso;
+        //codigo modificado para mandar detalles de la lista del curso
+        $sesiones = Curso::find($id)->sesiones_del_curso;
         //fin
         $curso = Curso::find($id);
         return view('cursos.layouts.show',compact('curso','sesiones')); //antes: compact('curso')

@@ -12,10 +12,10 @@ class PlantillaTableDataSeeder extends Seeder
     public function run()
     {
         //
-        for ($i=0; $i < 100; $i++) { 
+        for ($i=0; $i < 30; $i++) { 
 	    	DB::table('plantillas')->insert([
 
-                'plantillanombre' => str_random(8),
+                'plantillanombre' => 'Plantilla'.(int)str_random(30),
                 'plantillahtml' => str_random(8),
                 'plantillacss' => str_random(8),
                 'plantilladescripcion' => str_random(8),

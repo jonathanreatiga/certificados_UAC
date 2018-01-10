@@ -27,9 +27,9 @@ class PlantillaController extends Controller
     public function index(Request $request)
     {
         //$cursos = Curso::latest()->paginate(5);
-        $plantillas = Plantilla::Search($request->plantillanombre)->orderBy('id', 'DESC')->paginate(5);
+        $plantillas = Plantilla::Search($request->plantillanombre)->orderBy('id', 'ASC')->paginate(10);
         return view('plantillas.layouts.index',compact('plantillas'))
-            ->with('i', (request()->input('page', 1) - 1) * 2); //5)
+            ->with('i', (request()->input('page', 1) - 1) * 10); //5)
     }
 
     /**
@@ -71,8 +71,11 @@ class PlantillaController extends Controller
      */
     public function show($id)
     {
+         //codigo modificado para mandar detalles de la lista del curso
+         $sesiones = Plantilla::find($id)->sesiones_de_plantilla;
+         //fin
         $plantilla = Plantilla::find($id);
-        return view('plantillas.layouts.show',compact('plantilla'));
+        return view('plantillas.layouts.show',compact('plantilla','sesiones'));
     }
 
     /**

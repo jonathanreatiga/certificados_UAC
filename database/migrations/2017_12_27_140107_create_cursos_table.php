@@ -20,10 +20,10 @@ class CreateCursosTable extends Migration
             $table->string('cursodescripcion', 200);
             $table->integer('cursonumerohoras');
             $table->timestamps();
-
             //$table->engine = 'InnoDB';	//Specify the table storage engine (MySQL).
             //$table->charset = 'utf8';	//Specify a default character set for the table (MySQL).
             //$table->collation = 'utf8_unicode_ci';
+            $table->softDeletes();
         });
     }
 

@@ -45,3 +45,7 @@ Route::get('user', 'UserController@index')->name('users.layouts.index');
 //nuevo codigo para sesiones
 Route::resource('sesiones','SesionController');
 Route::get('sesion', 'SesionController@index')->name('sesiones.layouts.index');
+
+//nuevo codigo para matriculas
+Route::resource('matriculas','MatriculaController');
+Route::get('matricula', 'MatriculaController@index')->name('matriculas.layouts.index');

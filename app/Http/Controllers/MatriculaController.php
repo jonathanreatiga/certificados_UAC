@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Matricula;
+use App\Sesion;
 use App\Role;
+use App\Estado;
 
 use Illuminate\Http\Request;
 
-class RoleController extends Controller
+class MatriculaController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -26,8 +29,8 @@ class RoleController extends Controller
     public function index(Request $request)
     {
         //$cursos = Curso::latest()->paginate(5);
-        $roles = Role::Search($request->rolnombre)->orderBy('id', 'ASC')->paginate(10);
-        return view('roles.layouts.index',compact('roles'))
+        $matriculas = Matricula::Search($request->id_matricula)->orderBy('id', 'ASC')->paginate(10);
+        return view('matriculas.layouts.index',compact('matriculas'))
             ->with('i', (request()->input('page', 1) - 1) * 10); //5)
     }
 
@@ -38,7 +41,10 @@ class RoleController extends Controller
      */
     public function create()
     {
-        return view('roles.layouts.create');
+        $sesiones = Sesion::pluck('sesionfechainicio', 'id');
+        $roles = Role::pluck('rolnombre', 'id');
+        $estados = Estado::pluck('estadonombre', 'id');
+        return view('matriculas.layouts.create',compact('sesiones','roles','estados'));
     }
 
     /**
@@ -50,11 +56,13 @@ class RoleController extends Controller
     public function store(Request $request)
     {
         request()->validate([
-            'rolnombre' => 'required',
-            'rolcargo' => 'required',
+            'matriculadescargas' => '',
+            'sesiones_id' => 'required',
+            'rol_id' => 'required',
+            'estados_id' => 'required', //'plantilla_id' => '', para no ser requerido
         ]);
-        Role::create($request->all());
-        return redirect()->route('roles.layouts.index')
+        Matricula::create($request->all());
+        return redirect()->route('matriculas.layouts.index')
                         ->with('success','Curso created successfully');
     }
 
@@ -66,11 +74,11 @@ class RoleController extends Controller
      */
     public function show($id)
     {
-        //codigo modificado para mandar detalles de la lista de matriculas
-        $matriculas = Role::find($id)->matriculas_del_rol;
-        //fin
-        $roles = Role::find($id);
-        return view('roles.layouts.show',compact('roles','matriculas'));
+         //codigo modificado para mandar detalles de la lista de Matriculas
+         //$matriculas = Sesion::find($id)->matriculas_de_sesion;
+         //fin
+        $matriculas = Matricula::find($id);
+        return view('matriculas.layouts.show',compact('matriculas'));
     }
 
     /**
@@ -81,8 +89,11 @@ class RoleController extends Controller
      */
     public function edit($id)
     {
-        $roles = Role::find($id);
-        return view('roles.layouts.edit',compact('roles'));
+        $matriculas = Matricula::find($id);
+        $sesiones = Sesion::pluck('sesionfechainicio', 'id');
+        $roles = Role::pluck('rolnombre', 'id');
+        $estados = Estado::pluck('estadonombre', 'id');
+        return view('matriculas.layouts.edit',compact('matriculas','sesiones','roles','estados'));
     }
 
     /**
@@ -95,11 +106,13 @@ class RoleController extends Controller
     public function update(Request $request, $id)
     {
         request()->validate([
-            'rolnombre' => 'required',
-            'rolcargo' => 'required',
+            'matriculadescargas' => '',
+            'sesiones_id' => 'required',
+            'rol_id' => 'required',
+            'estados_id' => 'required', //'plantilla_id' => '', para no ser requerido
         ]);
-        Role::find($id)->update($request->all());
-        return redirect()->route('roles.layouts.index')
+        Matricula::find($id)->update($request->all());
+        return redirect()->route('matriculas.layouts.index')
                         ->with('success','Curso updated successfully');
     }
 
@@ -111,8 +124,8 @@ class RoleController extends Controller
      */
     public function destroy($id)
     {
-        Role::find($id)->delete();
-        return redirect()->route('roles.layouts.index')
+        Matricula::find($id)->delete();
+        return redirect()->route('matriculas.layouts.index')
                         ->with('success','Curso deleted successfully');
     }
 }

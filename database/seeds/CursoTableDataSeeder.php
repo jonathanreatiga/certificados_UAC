@@ -12,12 +12,12 @@ class CursoTableDataSeeder extends Seeder
     public function run()
     {
         //
-        for ($i=0; $i < 100; $i++) { 
+        for ($i=0; $i < 30; $i++) { 
 	    	DB::table('cursos')->insert([
 
-                'cursonombre' => str_random(8),
+                'cursonombre' => 'Curso'.(int)str_random(30),
                 'cursodescripcion' => str_random(8),
-                'cursonumerohoras' => (int)str_random(15)
+                'cursonumerohoras' => (int)str_random(8)
 	            //'email' => str_random(12).'@mail.com',
 	            //'password' => bcrypt('123456')
 	        ]);

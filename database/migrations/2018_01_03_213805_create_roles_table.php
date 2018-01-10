@@ -18,6 +18,7 @@ class CreateRolesTable extends Migration
             $table->string('rolnombre', 45);
             $table->string('rolcargo', 45);
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

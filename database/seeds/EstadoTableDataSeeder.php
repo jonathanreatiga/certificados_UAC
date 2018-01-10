@@ -12,9 +12,9 @@ class EstadoTableDataSeeder extends Seeder
     public function run()
     {
         //
-        for ($i=0; $i < 100; $i++) { 
+        for ($i=0; $i < 30; $i++) { 
 	    	DB::table('estados')->insert([
-                'estadonombre' => str_random(8),
+                'estadonombre' => 'Estado'.(int)str_random(8),
                 'estadodescripcion' => str_random(8)
 	            //'email' => str_random(12).'@mail.com',
 	            //'password' => bcrypt('123456')

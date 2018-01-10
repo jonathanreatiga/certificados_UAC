@@ -18,6 +18,7 @@ class CreateEstadosTable extends Migration
             $table->string('estadonombre', 45);
             $table->text('estadodescripcion');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

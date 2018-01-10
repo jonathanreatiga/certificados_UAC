@@ -1,12 +1,12 @@
-@extends('sesiones.layout')
+@extends('matriculas.layout')
 @section('content')
     <div class="row">
         <div class="col-lg-7 margin-tb"> {{-- col-lg-12 --}}
             <div class="pull-left">
-                <h2>Crear Nueva Sesion</h2>
+                <h2>Crear Nueva Matricula</h2>
             </div>
             <div class="pull-right">
-                <a class="btn btn-primary" href="{{ route('sesiones.index') }}"> Regresar</a>
+                <a class="btn btn-primary" href="{{ route('matriculas.index') }}"> Regresar</a>
             </div>
         </div>
     </div>
@@ -20,7 +20,7 @@
             </ul>
         </div>
     @endif  --}}
-    {!! Form::open(array('route' => 'sesiones.store','method'=>'POST')) !!}
-         @include('sesiones.layouts.form')
+    {!! Form::open(array('route' => 'matriculas.store','method'=>'POST')) !!}
+         @include('matriculas.layouts.form')
     {!! Form::close() !!}
 @endsection

@@ -27,9 +27,9 @@ class EstadoController extends Controller
     public function index(Request $request)
     {
         //$cursos = Curso::latest()->paginate(5);
-        $estados = Estado::Search($request->estadonombre)->orderBy('id', 'DESC')->paginate(5);
+        $estados = Estado::Search($request->estadonombre)->orderBy('id', 'ASC')->paginate(10);
         return view('estados.layouts.index',compact('estados'))
-            ->with('i', (request()->input('page', 1) - 1) * 2); //5)
+            ->with('i', (request()->input('page', 1) - 1) * 10); //5)
     }
 
     /**
@@ -67,8 +67,11 @@ class EstadoController extends Controller
      */
     public function show($id)
     {
+        //codigo modificado para mandar detalles de la lista del curso
+        $matriculas = Estado::find($id)->matriculas_del_estado;
+        //fin
         $estado = Estado::find($id);
-        return view('estados.layouts.show',compact('estado'));
+        return view('estados.layouts.show',compact('estado','matriculas'));
     }
 
     /**

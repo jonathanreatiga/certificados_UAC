@@ -42,5 +42,17 @@
             </div>
         </div>
 
+        {{--  codigo nuevo para mostar las matriculas que tiene cada estado  --}}
+        <h4>Informacion de Estado asociada a la tabla Matriculas:</h4>
+        @foreach ($matriculas as $matricula)
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <div class="form-group">
+                    <strong>Id de la tabla Matricula:</strong>
+                    {{$matricula->id}}
+                </div>
+            </div>
+        @endforeach
+        {{--  Fin  --}}
+
     </div>
 @endsection

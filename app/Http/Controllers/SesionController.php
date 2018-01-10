@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Sesion;
+use App\Curso;
+use App\Plantilla;
 
 use Illuminate\Http\Request;
 
@@ -29,7 +31,7 @@ class SesionController extends Controller
         //$cursos = Curso::latest()->paginate(5);
         $sesiones = Sesion::Search($request->sesionfecha)->orderBy('id', 'ASC')->paginate(10);
         return view('sesiones.layouts.index',compact('sesiones'))
-            ->with('i', (request()->input('page', 1) - 1) * 2); //5)
+            ->with('i', (request()->input('page', 1) - 1) * 10); //5)
     }
 
     /**
@@ -39,7 +41,9 @@ class SesionController extends Controller
      */
     public function create()
     {
-        return view('sesiones.layouts.create');
+        $cursos = Curso::pluck('cursonombre', 'id');
+        $plantillas = Plantilla::pluck('plantillanombre', 'id');
+        return view('sesiones.layouts.create',compact('cursos','plantillas'));
     }
 
     /**
@@ -54,6 +58,7 @@ class SesionController extends Controller
             'sesionfechainicio' => 'required',
             'sesionfechafinal' => 'required',
             'curso_id' => 'required',
+            'plantilla_id' => 'required', //'plantilla_id' => '', para no ser requerido
         ]);
         Sesion::create($request->all());
         return redirect()->route('sesiones.layouts.index')
@@ -68,11 +73,11 @@ class SesionController extends Controller
      */
     public function show($id)
     {
-        //codigo modificado para mandar detalles de la lista del curso
-        //$cursos = Sesion::find($id)->curso;
-        //fin
+         //codigo modificado para mandar detalles de la lista de Matriculas
+         $matriculas = Sesion::find($id)->matriculas_de_sesion;
+         //fin
         $sesiones = Sesion::find($id);
-        return view('sesiones.layouts.show',compact('sesiones'));
+        return view('sesiones.layouts.show',compact('sesiones','matriculas'));
     }
 
     /**
@@ -83,8 +88,10 @@ class SesionController extends Controller
      */
     public function edit($id)
     {
+        $cursos = Curso::pluck('cursonombre', 'id');
+        $plantillas = Plantilla::pluck('plantillanombre', 'id');
         $sesiones = Sesion::find($id);
-        return view('sesiones.layouts.edit',compact('sesiones'));
+        return view('sesiones.layouts.edit',compact('sesiones','cursos','plantillas'));
     }
 
     /**
@@ -100,8 +107,9 @@ class SesionController extends Controller
             'sesionfechainicio' => 'required',
             'sesionfechafinal' => 'required',
             'curso_id' => 'required',
+            'plantilla_id' => 'required',
         ]);
-        Sesiones::find($id)->update($request->all());
+        Sesion::find($id)->update($request->all());
         return redirect()->route('sesiones.layouts.index')
                         ->with('success','Curso updated successfully');
     }

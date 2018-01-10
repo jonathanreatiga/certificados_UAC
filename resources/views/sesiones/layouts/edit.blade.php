@@ -1,5 +1,4 @@
 @extends('sesiones.layout')
-
 @section('content')
     <div class="row">
         <div class="col-lg-7 margin-tb"> {{-- col-lg-12 --}}
@@ -11,7 +10,6 @@
             </div>
         </div>
     </div>
-
     {{--  @if (count($errors) > 0)
         <div class="alert alert-danger">
             <strong>Whoops!</strong> There were some problems with your input.<br><br>
@@ -22,11 +20,7 @@
             </ul>
         </div>
     @endif  --}}
-
-
     {!! Form::model($sesiones, ['method' => 'PATCH','route' => ['sesiones.update', $sesiones->id]]) !!}
         @include('sesiones.layouts.form')
     {!! Form::close() !!}
-
-
 @endsection

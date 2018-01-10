@@ -17,11 +17,12 @@ class CreateSesionesTable extends Migration
             $table->increments('id');
             $table->date('sesionfechainicio');
             $table->date('sesionfechafinal');
-            $table->integer('curso_id')->unsigned();
-            //$table->integer('plantilla_id')->unsigned();
+            $table->integer('curso_id')->unsigned()->nullable();
+            $table->integer('plantilla_id')->unsigned()->nullable();
             $table->foreign('curso_id')->references('id')->on('cursos')->onDelete('set null');
-            //$table->foreign('plantilla_id')->references('id')->on('plantillas');
+            $table->foreign('plantilla_id')->references('id')->on('plantillas')->onDelete('set null');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 

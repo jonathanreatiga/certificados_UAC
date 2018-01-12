@@ -4,11 +4,12 @@ namespace App;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class User extends Authenticatable
 {
     const AUTH_REDIRECT = '/dashboard';
-
+    use SoftDeletes;
     use Notifiable;
 
     /**
@@ -20,7 +21,7 @@ class User extends Authenticatable
         //'name', 'email', 'password', 'avatar', 'nickname', 'provider',  'provider_id'
         //'name', 'password', 'provider',  'provider_id'
         //'name', 'password'
-        'name', 'usuarioapellido', 'usuariotipodocumento', 'usuarionumerodocumento', 'password'
+        'name', 'usuarioapellido', 'usuariotipodocumento', 'usuarionumerodocumento', 'password', 'deleted_at'
     ];
 
     /**
@@ -32,10 +33,10 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    public function setPasswordAttribute($password)
-    {   
-        $this->attributes['password'] = bcrypt($password);
-    }
+    // public function setPasswordAttribute($password)
+    // {   
+    //     $this->attributes['password'] = bcrypt($password);
+    // }
 
     public function scopeSearch($query, $name)
     {

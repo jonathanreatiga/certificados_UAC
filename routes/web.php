@@ -49,3 +49,8 @@ Route::get('sesion', 'SesionController@index')->name('sesiones.layouts.index');
 //nuevo codigo para matriculas
 Route::resource('matriculas','MatriculaController');
 Route::get('matricula', 'MatriculaController@index')->name('matriculas.layouts.index');
+
+//codigo para sertificados
+Route::get('pdf-index', 'PdfController@index')->name('pdf-index');
+Route::get('pdf-index2', 'PdfController@buscar')->name('pdf-index2');
+Route::get('pdf-ruta',array('as'=>'pdfview','uses'=>'PdfController@pdfview'));

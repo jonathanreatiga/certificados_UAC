@@ -50,15 +50,29 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        request()->validate([
+        // request()->validate([
+        //     'name' => 'required|unique:users',
+        //     'usuarioapellido' => 'required',
+        //     'usuariotipodocumento' => 'required',
+        //     'usuarionumerodocumento' => 'required',
+        //     'password'=>'required|min:6|confirmed',
+        // ]);
+
+        // $user = User::create($request->only('name', 'usuarioapellido', 'usuariotipodocumento', 'usuarionumerodocumento', 'password'));
+        // return redirect()->route('users.layouts.index')
+        //                 ->with('success','Curso created successfully');
+        
+        $input = request()->validate([
             'name' => 'required|unique:users',
             'usuarioapellido' => 'required',
             'usuariotipodocumento' => 'required',
             'usuarionumerodocumento' => 'required',
             'password'=>'required|min:6|confirmed',
+            
         ]);
-        //User::create($request->all());
-        $user = User::create($request->only('name', 'usuarioapellido', 'usuariotipodocumento', 'usuarionumerodocumento', 'password'));
+        $input = request()->all();
+        $input['password'] = bcrypt($input['password']);
+        User::create($input);
         return redirect()->route('users.layouts.index')
                         ->with('success','Curso created successfully');
     }
@@ -96,14 +110,28 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        request()->validate([
+        // request()->validate([
+        //     'name' => 'required|unique:users,name,'.$id,
+        //     'usuarioapellido' => 'required',
+        //     'usuariotipodocumento' => 'required',
+        //     'usuarionumerodocumento' => 'required',
+        //     'password'=>'required|min:6|confirmed',
+        // ]);
+        // User::find($id)->update($request->all());
+        // return redirect()->route('users.layouts.index')
+        //                 ->with('success','Curso updated successfully');
+
+        $input = request()->validate([
             'name' => 'required|unique:users,name,'.$id,
             'usuarioapellido' => 'required',
             'usuariotipodocumento' => 'required',
             'usuarionumerodocumento' => 'required',
             'password'=>'required|min:6|confirmed',
         ]);
-        User::find($id)->update($request->all());
+
+        $input = request()->all();
+        $input['password'] = bcrypt($input['password']);
+        User::find($id)->update($input);
         return redirect()->route('users.layouts.index')
                         ->with('success','Curso updated successfully');
     }

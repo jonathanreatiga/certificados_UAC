@@ -66,6 +66,8 @@ class PdfController extends Controller
             //return $pdf->download('pdfview.pdf');
 
             $cursos = Curso::all(); 
+            //$html
+            //$html=str_replace("{nombre}",$usuario->nombre,$html);
             $pdf = PDF::loadView('pdf.pdfview', compact('cursos'));
             return $pdf->download('pdfview.pdf');
         }

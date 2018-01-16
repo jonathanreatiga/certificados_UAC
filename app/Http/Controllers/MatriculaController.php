@@ -75,7 +75,6 @@ class MatriculaController extends Controller
     public function show($id)
     {
          //codigo modificado para mandar detalles de la lista de Matriculas
-         //$matriculas = Sesion::find($id)->matriculas_de_sesion;
          //fin
         $matriculas = Matricula::find($id);
         return view('matriculas.layouts.show',compact('matriculas'));

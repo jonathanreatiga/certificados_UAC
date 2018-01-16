@@ -43,6 +43,6 @@ class Sesion extends Model
     //funcion para de uno a muchos
     public function matriculas_de_sesion()
     {
-        return $this->hasMany('App\Matricula');
+        return $this->hasMany('App\Matricula', 'sesiones_id');
     }
 }

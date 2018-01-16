@@ -33,7 +33,7 @@ class Plantilla extends Model
     //funcion para de uno a muchos
     public function sesiones_de_plantilla()
     {
-        return $this->hasMany('App\Sesion');
+        return $this->hasMany('App\Sesion', 'plantilla_id');
     }
 
 }

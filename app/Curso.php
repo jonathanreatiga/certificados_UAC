@@ -29,6 +29,6 @@ class Curso extends Model
     //funcion para de uno a muchos
     public function sesiones_del_curso()
     {
-        return $this->hasMany('App\Sesion');
+        return $this->hasMany('App\Sesion', 'curso_id');
     }
 }

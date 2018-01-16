@@ -27,6 +27,6 @@ class Estado extends Model
     //funcion para de uno a muchos
     public function matriculas_del_estado()
     {
-        return $this->hasMany('App\Matricula');
+        return $this->hasMany('App\Matricula', 'estados_id');
     }
 }

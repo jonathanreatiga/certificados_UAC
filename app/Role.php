@@ -27,6 +27,6 @@ class Role extends Model
     //funcion para de uno a muchos
     public function matriculas_del_rol()
     {
-        return $this->hasMany('App\Matricula');
+        return $this->hasMany('App\Matricula', 'rol_id');
     }
 }

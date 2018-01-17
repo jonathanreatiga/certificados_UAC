@@ -42,12 +42,30 @@
                 {{ $user->usuarionumerodocumento}}
             </div>
         </div>
-        {{--  <div class="col-xs-12 col-sm-12 col-md-12">
-            <div class="form-group">
-                <strong>Contraseña:</strong>
-                {{ $user->password}}
+        {{--  codigo nuevo para mostar las sesiones que tiene cada curso  --}}
+        <h4>Informacion de Usuario asociada a la tabla Matricula:</h4>
+        <div class="row">
+            <div class="col-lg-12 margin-tb">
+                <table class="table">
+                        <thead>
+                            <tr> 
+                                <th>Id de la tabla Matricula</th>
+                                <th>Numero de Descargas</th>
+                                <th>Sesiones</th>
+                            </tr>
+                        </thead>
+                        <tbody class="buscar">
+                            @foreach ($matriculas as $matricula)
+                                <tr>
+                                    <td>{{$matricula->id}}</td>
+                                    <td>{{ $matricula->matriculadescargas}}</td>
+                                    <td>{{ $matricula->sesiones->sesionfechainicio}} -- {{$matricula->sesiones->sesionfechafinal}}</td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                </table>
             </div>
-        </div>  --}}
-
+        </div>
+        {{--  Fin  --}}
     </div>
 @endsection

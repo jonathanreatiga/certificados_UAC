@@ -85,8 +85,11 @@ class UserController extends Controller
      */
     public function show($id)
     {
+        //codigo modificado para mandar detalles de la lista de matriculas
+        $matriculas = User::find($id)->user_matriculados;
+        //fin
         $user = User::find($id);
-        return view('users.layouts.show',compact('user'));
+        return view('users.layouts.show',compact('user', 'matriculas'));
     }
 
     /**

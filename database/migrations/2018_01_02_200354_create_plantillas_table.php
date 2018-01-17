@@ -15,12 +15,14 @@ class CreatePlantillasTable extends Migration
     {
         Schema::create('plantillas', function (Blueprint $table) {
             $table->increments('id');
+            
             $table->string('plantillanombre', 45);
             $table->longText('plantillahtml');
             $table->longText('plantillacss');
             $table->string('plantilladescripcion', 45);
             $table->string('plantillaorientacion', 45);
             $table->string('plantillaformato', 45);
+
             $table->timestamps();
             $table->softDeletes();
         });

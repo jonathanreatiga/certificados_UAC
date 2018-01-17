@@ -41,18 +41,27 @@
                 {{ $estado->updated_at}}
             </div>
         </div>
-
+        
         {{--  codigo nuevo para mostar las matriculas que tiene cada estado  --}}
         <h4>Informacion de Estado asociada a la tabla Matriculas:</h4>
-        @foreach ($matriculas as $matricula)
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="form-group">
-                    <strong>Id de la tabla Matricula:</strong>
-                    {{$matricula->id}}
+        <div class="row">
+                <div class="col-lg-12 margin-tb">
+                    <table class="table">
+                            <thead>
+                                <tr> 
+                                    <th>Id de la tabla Matricula</th>
+                                </tr>
+                            </thead>
+                            <tbody class="buscar">
+                                @foreach ($matriculas as $matricula)
+                                    <tr>
+                                        <td>{{$matricula->id}}</td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                    </table>
                 </div>
             </div>
-        @endforeach
         {{--  Fin  --}}
-
     </div>
 @endsection

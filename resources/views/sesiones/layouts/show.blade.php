@@ -37,14 +37,24 @@
         </div>
         {{--  codigo nuevo para mostar las matriculas que tiene cada sesion  --}}
         <h4>Informacion de Sesion asociada a la tabla Matriculas:</h4>
-        @foreach ($matriculas as $matricula)
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="form-group">
-                    <strong>Id de la tabla Matriculas:</strong>
-                    {{$matricula->id}}
-                </div>
+        <div class="row">
+            <div class="col-lg-12 margin-tb">
+                <table class="table">
+                        <thead>
+                            <tr> 
+                                <th>Id de la tabla Matriculas</th>
+                            </tr>
+                        </thead>
+                        <tbody class="buscar">
+                            @foreach ($matriculas as $matricula)
+                                <tr>
+                                    <td>{{$matricula->id}}</td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                </table>
             </div>
-        @endforeach
+        </div>
         {{--  Fin  --}}
         {{--  codigo nuevo para mostar el curso de la sesion  --}}
         <h4>Informacion de Sesion asociado a la tabla Curso:</h4>

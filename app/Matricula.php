@@ -3,9 +3,11 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Matricula extends Model
 {
+    use SoftDeletes;
     protected $table = 'matriculas';
     /**
      * The attributes that are mass assignable.
@@ -14,7 +16,7 @@ class Matricula extends Model
      */
     protected $fillable = [
         'matriculadescargas', 'sesiones_id', 'rol_id', 
-        'estados_id'
+        'estados_id', 'usuarios_id', 'deleted_at'
     ];
 
     public function scopeSearch($query, $id_matricula)
@@ -39,6 +41,12 @@ class Matricula extends Model
     public function estados()
     {
         return $this->belongsTo('App\Estado');
+        //->withDefault();
+    }
+    //de muchos a uno
+    public function usuarios()
+    {
+        return $this->belongsTo('App\User');
         //->withDefault();
     }
 }

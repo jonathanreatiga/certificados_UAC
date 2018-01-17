@@ -6,6 +6,7 @@ use App\Matricula;
 use App\Sesion;
 use App\Role;
 use App\Estado;
+use App\User;
 
 use Illuminate\Http\Request;
 
@@ -44,7 +45,8 @@ class MatriculaController extends Controller
         $sesiones = Sesion::pluck('sesionfechainicio', 'id');
         $roles = Role::pluck('rolnombre', 'id');
         $estados = Estado::pluck('estadonombre', 'id');
-        return view('matriculas.layouts.create',compact('sesiones','roles','estados'));
+        $usuarios = User::pluck('name','id');
+        return view('matriculas.layouts.create',compact('sesiones','roles','estados','usuarios'));
     }
 
     /**
@@ -60,6 +62,7 @@ class MatriculaController extends Controller
             'sesiones_id' => 'required',
             'rol_id' => 'required',
             'estados_id' => 'required', //'plantilla_id' => '', para no ser requerido
+            'usuarios_id' => 'required',
         ]);
         Matricula::create($request->all());
         return redirect()->route('matriculas.layouts.index')
@@ -92,7 +95,8 @@ class MatriculaController extends Controller
         $sesiones = Sesion::pluck('sesionfechainicio', 'id');
         $roles = Role::pluck('rolnombre', 'id');
         $estados = Estado::pluck('estadonombre', 'id');
-        return view('matriculas.layouts.edit',compact('matriculas','sesiones','roles','estados'));
+        $usuarios = User::pluck('name','id');
+        return view('matriculas.layouts.edit',compact('matriculas','sesiones','roles','estados','usuarios'));
     }
 
     /**
@@ -109,6 +113,7 @@ class MatriculaController extends Controller
             'sesiones_id' => 'required',
             'rol_id' => 'required',
             'estados_id' => 'required', //'plantilla_id' => '', para no ser requerido
+            'usuarios_id' => 'required',
         ]);
         Matricula::find($id)->update($request->all());
         return redirect()->route('matriculas.layouts.index')

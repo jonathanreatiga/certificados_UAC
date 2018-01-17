@@ -40,7 +40,8 @@
                         <th>Matricula Descarga</th>  
                         <th>Sesion</th>
                         <th>Rol</th>
-                        <th>Estados</th>
+                        <th>Estado</th>
+                        <th>Usuario</th>
                         <th class="text-center" width="230px">Action</th>
                     </tr>
                 </thead>
@@ -68,6 +69,12 @@
 
                             @isset($matricula->estados->estadonombre)
                                 <td>{{ $matricula->estados->estadonombre}}</td>
+                            @else
+                                <td>-- Sin Estado asociada --</td>
+                            @endisset
+
+                            @isset($matricula->usuarios->name)
+                                <td>{{ $matricula->usuarios->name}}</td>
                             @else
                                 <td>-- Sin Estado asociada --</td>
                             @endisset

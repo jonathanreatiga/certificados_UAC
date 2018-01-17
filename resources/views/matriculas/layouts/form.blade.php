@@ -37,6 +37,15 @@
             </div>
         </div>
         <div class="row">
+            <div class="col-sm-5">
+                    <div class="form-group">
+                        <strong>Seleccion del Usuario:</strong>
+                        {{--  {!! Form::textarea('rolcargo', null, array('placeholder' => 'Descripción del Cargo','class' => 'form-control')) !!}  --}}
+                        {!! Form::select('usuarios_id', $usuarios, null,['class' => 'form-control']) !!}
+                    </div>
+            </div>
+        </div>
+        <div class="row">
             <div class="col-sm-5 text-center">
                     {{--  <button type="submit" class="btn btn-primary" href="{{ route('articles.show') }}">Enviar</button>  --}}
                     <button type="submit" class="btn btn-primary">Enviar</button>

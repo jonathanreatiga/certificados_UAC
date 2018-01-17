@@ -84,37 +84,70 @@
         </div>
     {{--  Fin  --}}
      {{--  codigo nuevo para mostar la plantilla de la sesion  --}}
-     <h4>Informacion de Estados:</h4>
-     <div class="col-xs-12 col-sm-12 col-md-12">
-         <div class="form-group">
-             <strong>Id en la tabla Estado:</strong>
-             @isset($matriculas->estados_id)
-             <td>{{ $matriculas->estados_id}}</td>
-             @else
-             <td>-- Sin Estado asociada --</td>
-             @endisset
-         </div>
-     </div>
-     <div class="col-xs-12 col-sm-12 col-md-12">
-         <div class="form-group">
-             <strong>Nombre del Estado:</strong>
-             @isset($matriculas->estados->estadonombre)
-             <td>{{ $matriculas->estados->estadonombre}}</td>
-             @else
-             <td>-- Sin Estado asociada --</td>
-             @endisset
-         </div>
-     </div>
-     <div class="col-xs-12 col-sm-12 col-md-12">
-         <div class="form-group">
-             <strong>Descripcion Estado:</strong>
-             @isset($matriculas->estados->estadodescripcion)
-             <td>{{ $matriculas->estados->estadodescripcion}}</td>
-             @else
-             <td>-- Sin Estado asociada --</td>
-             @endisset
-         </div>
-     </div>
- {{--  Fin  --}}
+        <h4>Informacion de Estados:</h4>
+        <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="form-group">
+                <strong>Id en la tabla Estado:</strong>
+                @isset($matriculas->estados_id)
+                <td>{{ $matriculas->estados_id}}</td>
+                @else
+                <td>-- Sin Estado asociada --</td>
+                @endisset
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="form-group">
+                <strong>Nombre del Estado:</strong>
+                @isset($matriculas->estados->estadonombre)
+                <td>{{ $matriculas->estados->estadonombre}}</td>
+                @else
+                <td>-- Sin Estado asociada --</td>
+                @endisset
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="form-group">
+                <strong>Descripcion Estado:</strong>
+                @isset($matriculas->estados->estadodescripcion)
+                <td>{{ $matriculas->estados->estadodescripcion}}</td>
+                @else
+                <td>-- Sin Estado asociada --</td>
+                @endisset
+            </div>
+        </div>
+    {{--  Fin  --}}
+    {{--  codigo nuevo para mostar la plantilla de la sesion  --}}
+        <h4>Informacion de Usuarios:</h4>
+        <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="form-group">
+                <strong>Id en la tabla Usuarios:</strong>
+                @isset($matriculas->usuarios_id)
+                <td>{{ $matriculas->usuarios_id}}</td>
+                @else
+                <td>-- Sin Usuario asociado --</td>
+                @endisset
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="form-group">
+                <strong>Nombre del Usuario:</strong>
+                @isset($matriculas->usuarios->name)
+                <td>{{ $matriculas->usuarios->name}}</td>
+                @else
+                <td>-- Sin Usuario asociado --</td>
+                @endisset
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="form-group">
+                <strong>Numero de Documento:</strong>
+                @isset($matriculas->usuarios->usuarionumerodocumento)
+                <td>{{ $matriculas->usuarios->usuarionumerodocumento}}</td>
+                @else
+                <td>-- Sin Usuario asociado --</td>
+                @endisset
+            </div>
+        </div>
+    {{--  Fin  --}}
     </div>
 @endsection

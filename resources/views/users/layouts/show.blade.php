@@ -52,6 +52,8 @@
                                 <th>Id de la tabla Matricula</th>
                                 <th>Numero de Descargas</th>
                                 <th>Sesiones</th>
+                                <th>Plantilla</th>
+                                <th>Plantilla->plantilla Html</th>
                             </tr>
                         </thead>
                         <tbody class="buscar">
@@ -60,6 +62,8 @@
                                     <td>{{$matricula->id}}</td>
                                     <td>{{ $matricula->matriculadescargas}}</td>
                                     <td>{{ $matricula->sesiones->sesionfechainicio}} -- {{$matricula->sesiones->sesionfechafinal}}</td>
+                                    <td>{{ $matricula->sesiones->plantilla->plantillanombre}}</td>
+                                    <td>{{ $matricula->sesiones->plantilla->plantillahtml}}</td>
                                 </tr>
                             @endforeach
                         </tbody>

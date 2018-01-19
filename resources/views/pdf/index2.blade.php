@@ -40,32 +40,63 @@
                 <div class="row">
                     <div class="col-lg-12 margin-tb">
             
-                            <table class="table">
+                            {{-- <table class="table">
                                     <thead>
                                         <tr>
-                                            <th class="text-center">#</th>  
-                                            <th>Nombre del Curso</th>
-                                            <th>Descripcion del Curso</th>
-                                            <th>N° de Horas</th>
-                                            <th class="text-center" width="230px">Action</th>
+                                            <th class="text-center">#</th>
+                                            <th>Id de la tabla Usuario</th>  
+                                            <th>Nombre del Usuario</th>
+                                            <th>Apellido</th>
+                                            <th>N° de Documento</th>
                                         </tr>
                                     </thead>
                                     <tbody class="buscar">
-                                        @foreach ($cursos as $curso)
+                                        @foreach ($users as $user)
                                         <tr>
                                             <td class="text-center" >{{ ++$i }}</td>
-                                            <td>{{ $curso->cursonombre}}</td>
-                                            <td>{{ $curso->cursodescripcion}}</td>
-                                            <td>{{ $curso->cursonumerohoras}}</td>
+                                            <td>{{ $user->id}}</td>
+                                            <td>{{ $user->name}}</td>
+                                            <td>{{ $user->usuarioapellido}}</td>
+                                            <td>{{ $user->usuarionumerodocumento}}</td>
                                             <td class="td-actions text-right">
                                                 <a class="btn btn-info" rel="tooltip" title="Descargar" href="{{ route('pdfview',['download'=>'pdf']) }}">Descargar Pdf</a>
                                             </td>
                                         </tr>
                                         @endforeach
                                     </tbody>
+                                </table> --}}
+                                
+                                <table class="table">
+                                        <thead>
+                                            <tr> 
+                                                <th>Id de la tabla Matricula</th>
+                                                <th>Numero de Descargas</th>
+                                                <th>Sesiones</th>
+                                                {{-- <th>Plantilla</th>
+                                                <th>Plantilla->plantilla Html</th> --}}
+                                                <th>Nombre del Curso</th>
+                                                <th>Descripcion del Curso</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="buscar">
+                                            @foreach ($matriculas as $matricula)
+                                                <tr>
+                                                    <td>{{$matricula->id}}</td>
+                                                    <td>{{ $matricula->matriculadescargas}}</td>
+                                                    <td>{{ $matricula->sesiones->sesionfechainicio}} -- {{$matricula->sesiones->sesionfechafinal}}</td>
+                                                    {{-- <td>{{ $matricula->sesiones->plantilla->plantillanombre}}</td>
+                                                    <td>{{ $matricula->sesiones->plantilla->plantillahtml}}</td> --}}
+                                                    <td>{{ $matricula->sesiones->curso->cursonombre}}</td>
+                                                    <td>{{ $matricula->sesiones->curso->cursodescripcion}}</td>
+                                                    <td class="td-actions text-right">
+                                                        <a class="btn btn-info" rel="tooltip" title="Descargar" href="{{ route('pdfview',['download'=>'pdf', 'matricula_id'=>"$matricula->id"]) }}">Descargar Pdf</a>
+                                                    </td>
+                                                </tr>
+                                            @endforeach
+                                        </tbody>
                                 </table>
             
-                        {!! $cursos->links() !!}
+                        {{-- {!! $users->links() !!} --}}
             
                     </div>
                 </div>

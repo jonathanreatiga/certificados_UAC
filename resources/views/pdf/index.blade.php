@@ -50,7 +50,7 @@
                                              </div>  --}}
                                  
                                             <div class="input-group custom-search-form">
-                                                <input type="text" class="form-control" name="cursonombre" placeholder="Buscar...">
+                                                <input type="text" class="form-control" name="usuarionumerodocumento" placeholder="Buscar...">
                                                     <span class="input-group-btn">
                                                         <button class="btn btn-success" type="submit"> {{--  <button class="btn btn-default" type="submit">  --}}
                                                             <i class="fa fa-search"></i> <!--<span class="hiddenGrammarError" pre="" data-mce-bogus="1"-->

@@ -56,7 +56,7 @@
                             @endisset
 
                             @isset($matricula->sesiones->sesionfechainicio)
-                                <td>{{ $matricula->sesiones->sesionfechainicio}}</td>
+                                <td>{{ $matricula->sesiones->sesionfechainicio}} -- {{ $matricula->sesiones->sesionfechafinal}}</td>
                             @else
                                 <td>-- Sin Sesion asociado --</td>
                             @endisset

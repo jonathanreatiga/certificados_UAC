@@ -154,17 +154,32 @@ class PdfController extends Controller
             $plantillahtml = str_replace("ano_sesion", $remplazar, $plantillahtml);
 
             
-            // instantiate and use the dompdf class
-            //$option = new Options();
-            //$option->setIsRemoteEnabled(true);
-            $dompdf = new Dompdf();
+            // // instantiate and use the dompdf class
+            $options = new Options();
+            //dd($options);
+            //$options->set('defaultFont', 'serif');
+             $options->set('isPhpEnabled', TRUE);
+             //$options->set('isRemoteEnabled', TRUE);
+             $options->set('images', TRUE);
+             $options->set('isHtml5ParserEnabled', true);
+             $options->set('isFontSubsettingEnabled', TRUE);
+             $options->set('debugPng', TRUE);
+             $options->set('debugKeepTemp', TRUE);
+            //$options->set('debugCss', TRUE);
+            //$options->set('debugLayout', TRUE);
+            
+            //dd($options);
+            //$options->set('chroot', '');
+            $dompdf = new Dompdf($options);
             $dompdf->loadHtml($plantillahtml);
-            //$dompdf->loadHtml($matriculas['0']->plantilla->plantillahtml);
-            //$dompdf->loadHtml('hola');
+    
+            // $dompdf->set_option('isRemoteEnabled', TRUE);
+            // $dompdf2 = $dompdf->get_option('isRemoteEnabled');
+            // dd($dompdf2);
 
             // (Optional) Setup the paper size and orientation
-            $dompdf->setPaper('A4', 'landscape');
-
+            $dompdf->setPaper('letter', 'landscape'); //A4
+            //dd($dompdf);
             // Render the HTML as PDF
             $dompdf->render();
 

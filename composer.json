@@ -12,6 +12,7 @@
         "laravel/socialite": "^3.0",
         "laravel/tinker": "~1.0",
         "laravelcollective/html": "^5.5",
+        "spipu/html2pdf": "^5.1",
         "whoops/soap": "^1.0"
     },
     "require-dev": {

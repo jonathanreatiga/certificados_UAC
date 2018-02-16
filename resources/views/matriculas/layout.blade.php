@@ -30,6 +30,7 @@
 
     <!--         Core CSS          -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/select2.min.css') }}" rel="stylesheet">
 
     <!--  Material Dashboard CSS    -->
     <link href="{{ asset('css/material-dashboard.css') }}" rel="stylesheet">
@@ -66,6 +67,12 @@
 <script src="{{ asset('js/app.js') }}"></script>
 <script src="{{ asset('js/plugins.min.js') }}" type="text/javascript"></script>
 <script src="{{ asset('js/material.min.js') }}" type="text/javascript"></script>
+<script src="{{ asset('js/select2.full.min.js') }}" type="text/javascript"></script>
+<script>
+$(document).ready(function() {
+    $('select').select2();
+});
+</script>
 
 <!-- Plugin -->
 

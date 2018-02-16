@@ -11,6 +11,11 @@ use DB;
 use App\User;
 use App\Matricula;
 
+//require_once dirname(__FILE__).'/../vendor/autoload.php';
+use Spipu\Html2Pdf\Html2Pdf;
+use Spipu\Html2Pdf\Exception\Html2PdfException;
+use Spipu\Html2Pdf\Exception\ExceptionFormatter;
+
 class PdfController extends Controller
 {
     
@@ -43,26 +48,35 @@ class PdfController extends Controller
         ]);
 
         $this->user_name = DB::table('users')->where('usuarionumerodocumento', "$request->usuarionumerodocumento")->select('id')->get();
-        $this->user_id = (string)$this->user_name['0']->id;
-        $matriculas = User::find($this->user_id)->user_matriculados()->orderBy('id', 'DESC')->paginate(10);
+        if (!empty($this->user_name['0'])) {
+            //dd($this->user_name['0']);
+            $this->user_id = (string)$this->user_name['0']->id;
+            $matriculas = User::find($this->user_id)->user_matriculados()->orderBy('id', 'DESC')->paginate(10);
+            if(!empty($matriculas)){
 
-        return view('pdf.index2',compact('matriculas'))
-            ->with('i', (request()->input('page', 1) - 1) * 10);
+                return view('pdf.index2',compact('matriculas'))
+                ->with('i', (request()->input('page', 1) - 1) * 10);
+            }
+        }
+        
+        return redirect()->route('pdf-index');
+        // return view('pdf.index2',compact('matriculas'))
+        //     ->with('i', (request()->input('page', 1) - 1) * 10);
     }
 
 
-    function SpanishDate($FechaStamp)
-    {
-       $ano = date('Y',$FechaStamp);
-       $mes = date('n',$FechaStamp);
-       $dia = date('d',$FechaStamp);
-       $diasemana = date('w',$FechaStamp);
-       $diassemanaN= array("Domingo","Lunes","Martes","Miércoles",
-                      "Jueves","Viernes","Sábado");
-       $mesesN=array(1=>"Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio",
-                 "Agosto","Septiembre","Octubre","Noviembre","Diciembre");
-       return $diassemanaN[$diasemana].", $dia de ". $mesesN[$mes] ." de $ano";
-    }
+    // function SpanishDate($FechaStamp)
+    // {
+    //    $ano = date('Y',$FechaStamp);
+    //    $mes = date('n',$FechaStamp);
+    //    $dia = date('d',$FechaStamp);
+    //    $diasemana = date('w',$FechaStamp);
+    //    $diassemanaN= array("Domingo","Lunes","Martes","Miércoles",
+    //                   "Jueves","Viernes","Sábado");
+    //    $mesesN=array(1=>"Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio",
+    //              "Agosto","Septiembre","Octubre","Noviembre","Diciembre");
+    //    return $diassemanaN[$diasemana].", $dia de ". $mesesN[$mes] ." de $ano";
+    // }
 
     /**
      * Show the application dashboard.
@@ -89,6 +103,13 @@ class PdfController extends Controller
             //return $pdf->download('nombre_matricula.pdf');
             //$html=str_replace("{nombre}",$usuario->nombre,$html);
             //
+            $matriculas = Matricula::find($id);
+            $matriculas = $matriculas['matriculadescargas'] + 1;
+            $validate = [
+                'matriculadescargas' => "$matriculas"
+            ];
+            Matricula::find($id)->update($validate);
+
             $matriculas = Matricula::find($id)->sesiones()->orderBy('id', 'DESC')->paginate(10);
             $plantillahtml = $matriculas['0']->plantilla->plantillahtml;
 
@@ -154,37 +175,45 @@ class PdfController extends Controller
             $plantillahtml = str_replace("ano_sesion", $remplazar, $plantillahtml);
 
             
-            // // instantiate and use the dompdf class
-            $options = new Options();
-            //dd($options);
-            //$options->set('defaultFont', 'serif');
-             $options->set('isPhpEnabled', TRUE);
-             //$options->set('isRemoteEnabled', TRUE);
-             $options->set('images', TRUE);
-             $options->set('isHtml5ParserEnabled', true);
-             $options->set('isFontSubsettingEnabled', TRUE);
-             $options->set('debugPng', TRUE);
-             $options->set('debugKeepTemp', TRUE);
-            //$options->set('debugCss', TRUE);
-            //$options->set('debugLayout', TRUE);
-            
-            //dd($options);
-            //$options->set('chroot', '');
-            $dompdf = new Dompdf($options);
-            $dompdf->loadHtml($plantillahtml);
-    
-            // $dompdf->set_option('isRemoteEnabled', TRUE);
-            // $dompdf2 = $dompdf->get_option('isRemoteEnabled');
-            // dd($dompdf2);
+            /**
+             * initial use Html2Pdf
+             */
+             try {
+                //$html2pdf->setTestIsImage(false);
+                //$html2pdf->setFallbackImage($imageFilename);
 
-            // (Optional) Setup the paper size and orientation
-            $dompdf->setPaper('letter', 'landscape'); //A4
-            //dd($dompdf);
-            // Render the HTML as PDF
-            $dompdf->render();
+                //ob_start();
+                //include dirname(__FILE__).'/res/exemple02.php';
+                $content = ob_get_clean();
+                $content = $plantillahtml;
+                //$html2pdf = new Html2Pdf('L', 'LETTER', 'es', true, 'UTF-8', array(15, 5, 15, 5));
+                $html2pdf = new Html2Pdf('L', 'LETTER', 'es');
+                $html2pdf->pdf->SetDisplayMode('fullpage');
+                $html2pdf->setTestIsImage(false);
+                //$html2pdf->setFallbackImage($imageFilename);
+                //dd($html2pdf);
+                $html2pdf->writeHTML($content);
+                //$html2pdf->output('exemple02.pdf');
+                //
+                $usuarios = Matricula::find($id)->usuarios()->orderBy('id', 'DESC')->paginate(10);
+                $remplazar = $usuarios['0']->name." ".$usuarios['0']->usuarioapellido;
+                $html2pdf->output("Certificado-$remplazar.pdf");
 
-            // Output the generated PDF to Browser
-            $dompdf->stream();
+                // $html2pdf = new Html2Pdf('P', 'A4', 'en');
+                // //dd($html2pdf);
+                // $html2pdf->writeHTML('<h1>HelloWorld</h1>This is my first page');
+                // //dd($html2pdf);
+                // $html2pdf->pdf->SetDisplayMode('fullpage');
+                // $html2pdf->output('exemple01.pdf');
+
+            } catch (Html2PdfException $e) {
+                $html2pdf->clean();
+                $formatter = new ExceptionFormatter($e);
+                echo $formatter->getHtmlMessage();
+            }
+            /**
+             * end Html2Pdf
+             */
         }
 
 

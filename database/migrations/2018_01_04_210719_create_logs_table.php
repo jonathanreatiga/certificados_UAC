@@ -15,6 +15,14 @@ class CreateLogsTable extends Migration
     {
         Schema::create('logs', function (Blueprint $table) {
             $table->increments('id');
+
+            $table->string('logentidad', 45);
+            $table->string('logusuario', 45);
+            $table->string('logregistro', 45);
+            $table->string('logaccion', 45);
+            $table->text('logjson');
+            $table->integer('logfecha');
+
             $table->timestamps();
         });
     }

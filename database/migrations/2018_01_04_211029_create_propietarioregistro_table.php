@@ -15,6 +15,11 @@ class CreatePropietarioregistroTable extends Migration
     {
         Schema::create('propietarioregistro', function (Blueprint $table) {
             $table->increments('id');
+
+            $table->string('propietarioregistroentidad', 45);
+            $table->integer('propietarioregistroentidadid');
+            $table->integer('propietarioregistrousuarioid');
+
             $table->timestamps();
         });
     }

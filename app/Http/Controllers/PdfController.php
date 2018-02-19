@@ -4,9 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use Dompdf\Dompdf;
-use Dompdf\Options;
-use PDF;
+//use Dompdf\Dompdf;
+//use Dompdf\Options;
+//use PDF;
 use DB;
 use App\User;
 use App\Matricula;
@@ -64,20 +64,6 @@ class PdfController extends Controller
         //     ->with('i', (request()->input('page', 1) - 1) * 10);
     }
 
-
-    // function SpanishDate($FechaStamp)
-    // {
-    //    $ano = date('Y',$FechaStamp);
-    //    $mes = date('n',$FechaStamp);
-    //    $dia = date('d',$FechaStamp);
-    //    $diasemana = date('w',$FechaStamp);
-    //    $diassemanaN= array("Domingo","Lunes","Martes","Miércoles",
-    //                   "Jueves","Viernes","Sábado");
-    //    $mesesN=array(1=>"Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio",
-    //              "Agosto","Septiembre","Octubre","Noviembre","Diciembre");
-    //    return $diassemanaN[$diasemana].", $dia de ". $mesesN[$mes] ." de $ano";
-    // }
-
     /**
      * Show the application dashboard.
      *
@@ -104,11 +90,13 @@ class PdfController extends Controller
             //$html=str_replace("{nombre}",$usuario->nombre,$html);
             //
             $matriculas = Matricula::find($id);
+            if (!empty($matriculas))
+            {
             $matriculas = $matriculas['matriculadescargas'] + 1;
             $validate = [
                 'matriculadescargas' => "$matriculas"
             ];
-            Matricula::find($id)->update($validate);
+            //Matricula::find($id)->update($validate);
 
             $matriculas = Matricula::find($id)->sesiones()->orderBy('id', 'DESC')->paginate(10);
             $plantillahtml = $matriculas['0']->plantilla->plantillahtml;
@@ -173,7 +161,7 @@ class PdfController extends Controller
             $remplazar = $remplazar1['year'];
             $remplazar = strtoupper($remplazar);
             $plantillahtml = str_replace("ano_sesion", $remplazar, $plantillahtml);
-
+            
             
             /**
              * initial use Html2Pdf
@@ -206,14 +194,17 @@ class PdfController extends Controller
                 // $html2pdf->pdf->SetDisplayMode('fullpage');
                 // $html2pdf->output('exemple01.pdf');
 
-            } catch (Html2PdfException $e) {
-                $html2pdf->clean();
-                $formatter = new ExceptionFormatter($e);
-                echo $formatter->getHtmlMessage();
-            }
+                } catch (Html2PdfException $e) {
+                    $html2pdf->clean();
+                    $formatter = new ExceptionFormatter($e);
+                    echo $formatter->getHtmlMessage();
+                }
             /**
              * end Html2Pdf
              */
+            }else{
+                return redirect('pdf-index');
+            }
         }
 
 
